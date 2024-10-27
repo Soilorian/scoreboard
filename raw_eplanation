@@ -1,0 +1,46 @@
+I want you to also write a read me for one of my projects from the passage below
+
+
+durning one of my baseball classes, my coach told me about wanting to make a baseball scoreboard. since I was already familiar with IoT and enjoyed working with them, I decided to take my shot at this project and accepted the project.
+
+with very basic idea and understanding of arduino from previous expirences, I went to the main market place for electronic picese at Iran, Amjad mall.
+I started asking some shop owners for guidance and I came across a man who walked me through everything I needed to control the board, I had a basic picutre of how I wanted it to look at that time {place link to picture}
+
+I needed to control 8 seven segments and 9 leds, they suggested TM1638 which was an IC that used time multiplexing to control moltiple segments and leds
+
+I also bought an esp32 for its bluetooth and wifi support and got stuff for a mini version of this project to build before building the main one. some segments, leds, wire and resistor. then I went to an LED shop to buy the appropriate LED to be visiable in sunlight.
+I tried some shops but they were all very busy and board and didn't want to answer my questions. after a lot of trying I figured that I need power leds to be visiable in sunlight and some heat sync because the generate lots of heat and can damange themselves and also a power supply which I had no idea how to find the best one.
+
+then I went back to home and wanted to start building the test version but I relised that the IC that I got was an SMD IC and not a DIP so it was very hard to work with it.
+so I had to go back to the local electronic shop at karaj. there, I was lucky enough to find a very kind man running an LED shop. I spoke to him for hours and finally understood what I needed to do for the LEDs, each of them needed 2.2 volts to turn on at full brightness and also they do not require such big heat sync to function.
+so I bought a sample heat sync made of aluminioum and some test leds and went back home.
+
+I calculated the power supply details as follows:
+I have 49 segments that I want to turn on, each requiring 350 mA of current so I would at least need a 15 A power supply with a voltage of at least 6 volts. so I bought a 24 volt, 12 Amp switching power supply along with a lot of wire, solder equipment and the SMD to DIP convertor.
+later that night I also bought a saw to cut the aluminioum heat sync more easily.
+
+after I recieved the stuff I ordered, I got to soldering the IC to the board, I had 3 IC to test and I exactly messed up 2 of them until I got it right, which after a week of this I figured that I don't need an IC for time multiplexing, esp32 has enough ports to control everything. then I setup the power supply and then I relised a bigger problem, how can I control the led with esp32 which can output maximum of 3v.
+from one of my courses at university I was familiar with transistor, I searched a bit and figured that in fact transistor is used in such cases and can control the connection.
+
+
+so I setup a simple curcuit and *boom*, the transistor exploded. so I relised that they have maximum current value. So I looked for a stronger transistor and bought it and tried to set up the same circuit but it wasn't working.
+because the voltage that esp32 gave out was not enough to reach the threashold level for the gate.
+
+I asked around again and this was the part where I almost gave up. but after asking one of my seniors at university, I build a circuit that uses both the small and large transistor to control an LED.
+
+parralel to all of these, I also was manufacturing the picese of the heat sync with the hand saw, soldering the LEDs and designing the board.
+
+after that came another problem, sience I didn't do any engineering for the curcuit between the leds and power supply, the leds were burinning, then I tried one of my resistors which was 100 ohms and at that point I relised that a resistor's wattage is important.
+with 100 ohm resistance and the current that leds get is 350 mA, there is a wattage of 9 watts while my resistor is only 1 watt. so I was trying different circuits with parallel and series resistors to find the right resistance until I decided to actually engineer it. in that time I also came across a 9v regulator which made me only need a resistor with 8 ohms and wattage of 1 which I easily bought.
+
+then after final tests, I figured what I wanted and jsut had to make it.
+
+here, I had the option to manufacture a PCB for what I wanted to do but I decided to be cheap and use a perfomboard and soldering which was a terrible chose.
+
+I started soldering everything onto the board and testing each connection with a multi meter. this took almost 2 weeks to complete, by this time I had soldered the LEDs and cut the aluminioum into segment picese and designed the board.
+
+then after 3 more weeks of connecting the wires of LEDs to the perfomboard and connecting the esp32 to them, I turned on the board for the first time, it was absolutly beuatiful. yes it had a lot of bugs and and lot of the LEDs weren't turnning on but the progress I was making was very pleasing.
+
+from here, everything was very smooth. I fixed some soldering mistakes, I secured the connections, I wrote a simple program to be able to command the esp32 via bluetooth and got to a functional state.
+
+I plan to write a specific android app for it as well but that's it for now.
